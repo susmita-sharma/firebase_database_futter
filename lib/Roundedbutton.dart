@@ -5,7 +5,7 @@ class RoundedButton extends StatelessWidget {
       {required this.colour, required this.title, required this.onPressed});
   final Color colour;
   final String title;
-  final Function onPressed;
+  final VoidCallback? onPressed;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,7 +15,7 @@ class RoundedButton extends StatelessWidget {
         color: colour,
         borderRadius: BorderRadius.circular(30.0),
         child: MaterialButton(
-          onPressed: (){},
+          onPressed: onPressed,
           //Go to login screen.
           minWidth: 200.0,
           height: 42.0,

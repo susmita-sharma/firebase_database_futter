@@ -50,9 +50,6 @@ class _FirstPageState extends State<FirstPage> {
       ),
         body: Center(child: TextButton(onPressed: () {
           Navigator.pushNamed(context, 'homepage');
-
-
-
         }, child: Text("Emp Details"), ))
     );
   }
