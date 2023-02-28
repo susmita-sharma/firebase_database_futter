@@ -82,7 +82,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     final newUser = await _auth.createUserWithEmailAndPassword(
                         email: email, password: password);
                     if (newUser != null) {
-                      Navigator.pushNamed(context, 'home_screen');
+                      Navigator.pushNamed(context, 'first_page');
                     }
                   } catch (e) {
                     print(e);
