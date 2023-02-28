@@ -1,6 +1,8 @@
+import 'package:firebase_database_futter/homepage.dart';
 import 'package:flutter/material.dart';
 import 'topbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'Roundedbutton.dart';
 
 User? loggedinUser;
 
@@ -48,9 +50,16 @@ class _FirstPageState extends State<FirstPage> {
         title: Text('Home Page'),
         backgroundColor: Colors.lightBlueAccent,
       ),
-        body: Center(child: TextButton(onPressed: () {
-          Navigator.pushNamed(context, 'homepage');
-        }, child: Text("Emp Details"), ))
+        body: Column(
+          children: [
+            RoundedButton(
+                colour: Colors.lightBlueAccent,
+                title: 'Emp Details',
+                onPressed: (){
+                  Navigator.pushNamed(context, 'homepage');
+                })
+          ],
+        ),
     );
   }
 }
