@@ -5,7 +5,7 @@ class RoundedButton extends StatelessWidget {
       {required this.colour, required this.title, required this.onPressed});
   final Color colour;
   final String title;
-  final VoidCallback? onPressed;
+  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return Padding(

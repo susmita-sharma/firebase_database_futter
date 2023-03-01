@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'Roundedbutton.dart';
+import 'csvfileLoad.dart';
+
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -24,11 +28,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     Navigator.pushNamed(context, 'login_screen');
                   },
                 ),
+
                 RoundedButton(
                     colour: Colors.blueAccent,
                     title: 'Register',
                     onPressed: () {
                       Navigator.pushNamed(context, 'registration_screen');
+                    }),
+
+                RoundedButton(
+                    colour: Colors.blueAccent,
+                    title: 'CsvLoad',
+                    onPressed: () {
+                      Navigator.pushNamed(context, 'csv_load');
                     }),
               ]),
         ));
