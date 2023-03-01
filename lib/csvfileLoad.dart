@@ -45,13 +45,16 @@ class _CsvLoadPageState extends State<CsvLoadPage> {
         itemBuilder: (_, index) {
          // print(index);
 
-          return Card(
-            margin: const EdgeInsets.all(10),
-            color: index == 0 ? Colors.red : Colors.green,
-            child: ListTile(
-              leading: Text(_data[index][0].toString()),
-              title: Text(_data[index][1]),
-              trailing: Text(_data[index][2].toString()),
+          return Scrollbar(
+            scrollbarOrientation: ScrollbarOrientation.top,
+            child: Card(
+              margin: const EdgeInsets.all(10),
+              color: index == 0 ? Colors.red : Colors.green,
+              child: ListTile(
+                leading: Text(_data[index][0].toString()),
+                title: Text(_data[index][1]),
+                trailing: Text(_data[index][2].toString()),
+              ),
             ),
           );
         },
