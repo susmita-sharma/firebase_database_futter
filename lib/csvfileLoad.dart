@@ -3,10 +3,6 @@ import 'package:flutter/services.dart' show rootBundle;
 
 import 'package:csv/csv.dart';
 
-
-
-
-
 class CsvLoadPage extends StatefulWidget {
   const CsvLoadPage({Key? key}) : super(key: key);
 
@@ -21,11 +17,11 @@ class _CsvLoadPageState extends State<CsvLoadPage> {
   void _loadCSV() async {
     final _rawData = await rootBundle.loadString("assets/test.csv");
     List<List<dynamic>> _listData =
-    const CsvToListConverter().convert(_rawData,eol: "\n");
+    const CsvToListConverter().convert(_rawData, eol: '\n');
     setState(() {
       _data = _listData;
-    //  print('******printing list 2,1');
-    //  print(_listData[0][7]);
+       print(_data.length);
+       //print(_listData[0][7]);
 
 
     });
@@ -42,8 +38,9 @@ class _CsvLoadPageState extends State<CsvLoadPage> {
         itemCount: _data.length,
 
 
+
         itemBuilder: (_, index) {
-         // print(index);
+          print(index);
 
           return Scrollbar(
             scrollbarOrientation: ScrollbarOrientation.top, //
