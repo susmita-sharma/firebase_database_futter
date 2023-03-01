@@ -7,6 +7,7 @@ import 'homepage.dart';
 import 'loginscreen.dart';
 import 'signup.dart';
 import 'welcomescreen.dart';
+import 'readcsv.dart';
 
 
 void main() async {
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
         'welcome_screen': (context) => WelcomeScreen(),
         'registration_screen': (context) => RegistrationScreen(),
         'login_screen': (context) => LoginScreen(),
-        'first_page': (context) => FirstPage()
+        'first_page': (context) => FirstPage(),
+        'data_page' : (context) => Csvpage(),
       },
 
 
