@@ -197,7 +197,6 @@ class _HomePageState extends State<HomePage> {
                           IconButton(
                             icon: const Icon(Icons.more_vert),
                             onPressed: () {
-                              _deleteEmployee(documentSnapshot.id);
                               //Text(documentSnapshot['designation'].toString());
                             },
 
