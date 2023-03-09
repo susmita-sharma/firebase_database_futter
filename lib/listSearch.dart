@@ -3,6 +3,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+
+
 
 void main() {
    runApp(const MyApp());
@@ -105,6 +108,7 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.amberAccent,
                   elevation: 4,
                   margin: const EdgeInsets.symmetric(vertical: 10),
+
                   child: ListTile(
                     leading: Text(
                       _foundUsers[index]["id"].toString(),
@@ -113,7 +117,9 @@ class _HomePageState extends State<HomePage> {
                     title: Text(_foundUsers[index]['name']),
                     subtitle: Text(
                         '${_foundUsers[index]["age"].toString()} years old'),
+                    trailing: IconButton(icon: Icon(Icons.phone), onPressed: _callNumber ,),
                   ),
+
                 ),
               )
                   : const Text(
@@ -128,3 +134,8 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+_callNumber() async{
+  print('@@_callNumber is called');
+  const number = '9851141621'; //set the number here
+  bool? res = await FlutterPhoneDirectCaller.callNumber(number);
+}
