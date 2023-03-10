@@ -1,13 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'firstPageObjNavigation.dart';
 
 
-class Person {
-  final String name;
-  final int age;
-
-  Person({required this.name, required this.age});
-}
 
 
 class SecondPage extends StatelessWidget {
@@ -19,10 +14,10 @@ class SecondPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Page"),
+        title: Text("Employee Detail Page"),
       ),
       body: Center(
-        child: Text("Name: ${person.name}\nAge: ${person.age}"),
+        child: Text("Name: ${person.name}\nAge: ${person.age} \nEmployeeID : ${person.id} " ),
       ),
     );
   }
