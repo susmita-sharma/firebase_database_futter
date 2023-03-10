@@ -80,7 +80,7 @@ Future <List<Person>> loadJsonData() async {
   // ];
   print("@@@@ trying to map");
 // Convert JSON list to list of Person instances
-  List<Person> personList = jsonList.map((json) => Person(json["id"], json["name"], json["age"])).toList();
+  List<Person> personList = jsonList.map((jsonsData) => Person(jsonsData["id"], jsonsData["name"], jsonsData["age"])).toList();
   print(personList);
   return personList;
  }

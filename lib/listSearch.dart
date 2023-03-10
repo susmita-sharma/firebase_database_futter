@@ -1,15 +1,13 @@
-
 // main.dart
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
-
-
 void main() {
-   runApp(const MyApp());
-    }
+  runApp(const MyApp());
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -48,7 +46,6 @@ class _HomePageState extends State<HomePage> {
     {"id": 10, "name": "Becky", "age": 32}
   ];
 
-
   // This list holds the data for the list view
   List<Map<String, dynamic>> _foundUsers = [];
   @override
@@ -59,17 +56,30 @@ class _HomePageState extends State<HomePage> {
   }
 
   // This function is called whenever the text field changes
-  void _runFilter(String enteredKeyword) {
+  void _runFilter(dynamic enteredKeyword) {
+    int? userInt = int.tryParse(enteredKeyword);
+    print(userInt);
+
     List<Map<String, dynamic>> results = [];
     if (enteredKeyword.isEmpty) {
       // if the search field is empty or only contains white-space, we'll display all users
       results = _allUsers;
-    } else {
+    }
+
+    else if (userInt != null){
       results = _allUsers
-          .where((user) =>
-          user["name"].toLowerCase().contains(enteredKeyword.toLowerCase()))
+          .where((userData) =>
+          (userData['id'].toString()).contains(enteredKeyword.toString()))
           .toList();
-      // we use the toLowerCase() method to make it case-insensitive
+
+
+    }
+    else { // else (enteredKeyword.isString) { } elseif { userData["id"] }
+    results = _allUsers
+        .where((userData) =>
+    userData["name"].toLowerCase().contains(enteredKeyword.toLowerCase()))
+        .toList();
+    // we use the toLowerCase() method to make it case-insensitive
     }
 
     // Refresh the UI
@@ -102,30 +112,32 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: _foundUsers.isNotEmpty
                   ? ListView.builder(
-                itemCount: _foundUsers.length,
-                itemBuilder: (context, index) => Card(
-                  key: ValueKey(_foundUsers[index]["id"]),
-                  color: Colors.amberAccent,
-                  elevation: 4,
-                  margin: const EdgeInsets.symmetric(vertical: 10),
+                      itemCount: _foundUsers.length,
+                      itemBuilder: (context, index) => Card(
+                        key: ValueKey(_foundUsers[index]["id"]),
+                        color: Colors.amberAccent,
+                        elevation: 4,
+                        margin: const EdgeInsets.symmetric(vertical: 10),
+                        child:ListTile(
+                            leading: Text(
+                              _foundUsers[index]["id"].toString(),
+                              style: const TextStyle(fontSize: 24),
+                            ),
+                            title: Text(_foundUsers[index]['name']),
+                            subtitle: Text(
+                                '${_foundUsers[index]["age"].toString()} years old'),
+                            trailing: IconButton(
+                              icon: Icon(Icons.phone),
+                              onPressed: _callNumber,
+                            ),
+                          ),
+                        ),
 
-                  child: ListTile(
-                    leading: Text(
-                      _foundUsers[index]["id"].toString(),
-                      style: const TextStyle(fontSize: 24),
-                    ),
-                    title: Text(_foundUsers[index]['name']),
-                    subtitle: Text(
-                        '${_foundUsers[index]["age"].toString()} years old'),
-                    trailing: IconButton(icon: Icon(Icons.phone), onPressed: _callNumber ,),
-                  ),
-
-                ),
-              )
+                    )
                   : const Text(
-                'No results found',
-                style: TextStyle(fontSize: 24),
-              ),
+                      'No results found',
+                      style: TextStyle(fontSize: 24),
+                    ),
             ),
           ],
         ),
@@ -134,7 +146,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-_callNumber() async{
+_callNumber() async {
   print('@@_callNumber is called');
   const number = '9851141621'; //set the number here
   bool? res = await FlutterPhoneDirectCaller.callNumber(number);
