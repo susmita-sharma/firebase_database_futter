@@ -2,9 +2,6 @@
 import 'package:flutter/material.dart';
 import 'firstPageObjNavigation.dart';
 
-
-
-
 class SecondPage extends StatelessWidget {
   final Person person;
 
