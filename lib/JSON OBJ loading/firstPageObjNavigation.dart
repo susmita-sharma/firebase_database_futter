@@ -7,10 +7,12 @@ import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class Person {
   final String name;
-  final int age;
-  final int id;
+  final String designation;
+  final String id;
+  final String phone;
 
-  Person({required this.name, required this.age, required this.id});
+  Person({required this.name, required this.designation, required this.id, required this.phone});
+
 }
 
 class FirstPageObj extends StatefulWidget {
@@ -106,7 +108,7 @@ class _FirstPageObj extends State<FirstPageObj> {
                           ),
                           title: Text(_foundUsers[index].name),
                           subtitle: Text(
-                              '${_foundUsers[index].age.toString()} years old'),
+                              '${_foundUsers[index].id.toString()} years old'),
                           trailing: IconButton(
                             icon: Icon(Icons.man),
                             onPressed: () {
@@ -117,8 +119,12 @@ class _FirstPageObj extends State<FirstPageObj> {
                                   builder: (context) => SecondPage(
                                       person: Person(
                                           name: _foundUsers[index].name,
-                                          age: _foundUsers[index].age,
-                                          id: _foundUsers[index].id)),
+                                          designation: _foundUsers[index].designation,
+                                          id: _foundUsers[index].id,                                           phone : _foundUsers[index].phone,
+                                      ),
+
+                                  ),
+
                                 ),
                               );
                             },
@@ -158,7 +164,7 @@ Future<List<Person>> loadJsonData() async {
 // Convert JSON list to list of Person instances
   List<Person> personList = jsonList
       .map((jsonsData) => Person(
-          id: jsonsData["id"], name: jsonsData["name"], age: jsonsData["age"]))
+          name: jsonsData["name"], designation: jsonsData["designation"], id: jsonsData["id"], phone: jsonsData["phone"]))
       .toList();
   print(personList);
   return personList;

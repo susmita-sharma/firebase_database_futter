@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'firstPageObjNavigation.dart';
 
@@ -14,11 +13,13 @@ class SecondPage extends StatelessWidget {
         title: Text("Employee Detail Page"),
       ),
       body: Center(
-        child: Text("Name: ${person.name}\nAge: ${person.age} \nEmployeeID : ${person.id} " ),
+        child: SizedBox(
+          width: 500,
+          height: 500,
+          child:Text(
+              "Name: ${person.name}\nAge: ${person.designation} \nEmployeeID : ${person.id}  \nPhone : ${person.phone} ", style: TextStyle(color: Colors.red, backgroundColor: Colors.blue, fontWeight: FontWeight.bold), ),
+        ),
       ),
     );
   }
 }
-
-
-
